@@ -1,0 +1,12 @@
+<div *ngFor="let todo of todos">
+  <mat-card>
+    <mat-card-title>
+      {{todo.title}}
+    </mat-card-title>
+    <mat-card-content>
+      {{todo.description}}
+    </mat-card-content>
+    <button mat-raised-button color="primary">Done</button>
+    <button mat-stroked-button color="primary" style="margin-left: 1rem"><a [routerLink]="['/todo',todo.id]">Inspect</a></button>
+  </mat-card>
+</div>
