@@ -11,8 +11,10 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {RouterModule} from "@angular/router";
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
+import {AngularFireModule} from "@angular/fire/compat";
 
 const config = {
   apiKey: "AIzaSyCLvEGr6StvBXYJU0C-G-uuJniAwsWPG3Q",
@@ -44,8 +46,8 @@ const config = {
       {path: '', component: TodoListComponent},
       {path: 'todo/:todoId', component: TodoDescriptionComponent}
     ])],
-    provideFirebaseApp(()=> initializeApp(config)),
-    provideFirestore(()=>getFirestore())
+    AngularFireModule.initializeApp(config),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

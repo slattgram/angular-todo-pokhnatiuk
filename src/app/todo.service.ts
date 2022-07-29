@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
-import {Firestore,docSnapshots} from "@angular/fire/firestore/lite";
-import {Todo} from "./todo";
-import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
-import {Observable} from "rxjs";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TodoService {
 
-  constructor() {
 
-  }
+
+  constructor(private fbs: AngularFirestore) {}
+    getData(){
+     return this.fbs.collection('todos').snapshotChanges()
+    }
+
 }
+
+
