@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {todos} from '../todo'
+import {Todo} from '../todo'
+import {Firestore, collection, docData, collectionData, getDocs} from "@angular/fire/firestore";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-todo-list',
@@ -7,10 +9,25 @@ import {todos} from '../todo'
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  todos = todos;
-  constructor() { }
+  todoList: Todo[] = [];
+
+  constructor(private firestore: Firestore) {
+    const todoCollection = collection(firestore,'todos')
+    getDocs(todoCollection).then((snapshot)=>{
+      snapshot.docs.forEach(doc=>{
+        this.todoList.push({
+          id: doc.data()['id'],
+          description: doc.data()['description'],
+          title: doc.data()['title'],
+          isDone: doc.data()['isDone']
+        })
+      })
+    })
+    console.log(this.todoList)
+  }
 
   ngOnInit(): void {
+
   }
 
 }

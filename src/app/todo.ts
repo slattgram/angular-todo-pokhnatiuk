@@ -2,13 +2,14 @@ export interface Todo {
   id: number;
   title: string;
   description: string;
+  isDone: boolean;
 }
 
 export const todos = [
   {
     id: 1,
     title: 'add styles here',
-    description: 'add beautiful styles to this  card ^_^'
+    description: 'add beautiful styles to this  card ^_^',
   },
   {
     id: 2,
