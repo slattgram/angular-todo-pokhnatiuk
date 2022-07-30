@@ -10,24 +10,24 @@ import {Todo} from "../todo";
 })
 export class TodoListComponent implements OnInit {
 
-  todo$ : Todo[] = [];
-  constructor(private todoService:TodoService) {
+  todo$: Todo[] = [];
+
+  constructor(private todoService: TodoService) {
 
   }
 
+// {
+//   id: doc.payload.doc.get('id'),
+//   title: doc.payload.doc.get('title'),
+//   description: doc.payload.doc.get('description'),
+//   isDone: doc.payload.doc.get('isDone')
+// }
 
-
-  ngOnInit(){
-    this.todoService.getData().subscribe(response=>{
-      response.forEach(doc=>{
-        this.todo$.push({
-          id: doc.payload.doc.get('id'),
-          title: doc.payload.doc.get('title'),
-          description: doc.payload.doc.get('description'),
-          isDone: doc.payload.doc.get('isDone')
-        })
+  ngOnInit() {
+    this.todoService.getData().subscribe(response => {
+      response.forEach((doc) => {
+        this.todo$.push(<Todo>doc.payload.doc.data())
       })
     })
   }
 }
-
