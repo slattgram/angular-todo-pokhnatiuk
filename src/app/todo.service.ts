@@ -13,7 +13,9 @@ export class TodoService {
     getData(){
      return this.fbs.collection('todos').snapshotChanges()
     }
-
+    getDocById(id:string){
+    return this.fbs.collection('todos').doc(id).snapshotChanges()
+    }
 }
 
 

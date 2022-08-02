@@ -12,16 +12,7 @@ export class TodoListComponent implements OnInit {
 
   todo$: Todo[] = [];
 
-  constructor(private todoService: TodoService) {
-
-  }
-
-// {
-//   id: doc.payload.doc.get('id'),
-//   title: doc.payload.doc.get('title'),
-//   description: doc.payload.doc.get('description'),
-//   isDone: doc.payload.doc.get('isDone')
-// }
+  constructor(private todoService: TodoService) {}
 
   ngOnInit() {
     this.todoService.getData().subscribe(response => {

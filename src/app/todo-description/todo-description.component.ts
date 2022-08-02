@@ -16,8 +16,14 @@ export class TodoDescriptionComponent implements OnInit {
   todo: Todo | any;
 
   ngOnInit(): void {
+
     const routeParams = this.route.snapshot.paramMap;
     const todoIdFromRoute = routeParams.get('todoId');
-    this.todo = this.todos.find(todo => todo.id === todoIdFromRoute)
+    this.todoService.getDocById(<string>todoIdFromRoute).subscribe(res=>{
+      this.todo = {
+        id: res.payload.id,
+        ...(res.payload.data() as Record<string, unknown>)
+      }
+    })
   }
 }
