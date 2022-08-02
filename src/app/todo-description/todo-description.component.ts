@@ -26,4 +26,9 @@ export class TodoDescriptionComponent implements OnInit {
       }
     })
   }
+
+  deleteThisDoc(){
+    this.todoService.deleteDocById(this.todo.id)
+  }
+
 }

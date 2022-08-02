@@ -10,12 +10,18 @@ export class TodoService {
 
 
   constructor(private fbs: AngularFirestore) {}
-    getData(){
-     return this.fbs.collection('todos').snapshotChanges()
-    }
-    getDocById(id:string){
+  getData(){
+    return this.fbs.collection('todos').snapshotChanges()
+  }
+
+  getDocById(id:string){
     return this.fbs.collection('todos').doc(id).snapshotChanges()
-    }
+  }
+
+  deleteDocById(id:string){
+    this.fbs.collection('todos').doc(id).delete()
+  }
+
 }
 
 
