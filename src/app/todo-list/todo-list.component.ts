@@ -26,7 +26,11 @@ export class TodoListComponent implements OnInit {
   ngOnInit() {
     this.todoService.getData().subscribe(response => {
       response.forEach((doc) => {
-        this.todo$.push(<Todo>doc.payload.doc.data())
+        console.log({...(doc.payload.doc.data() as Record<string,unknown>)})
+        this.todo$.push(<Todo>{
+          id:doc.payload.doc.id,
+          ...(doc.payload.doc.data() as Record<string, unknown>)
+        })
       })
     })
   }

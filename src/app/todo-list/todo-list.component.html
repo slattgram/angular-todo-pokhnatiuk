@@ -1,6 +1,6 @@
 <h2> Done tasks : </h2>
 <div *ngFor="let todo of todo$">
-  <mat-card *ngIf="todo.isDone">
+  <mat-card *ngIf="todo.isDone" style="margin: 1rem">
     <mat-card-title>
       {{todo.title}}
     </mat-card-title>
@@ -15,7 +15,7 @@
 
 <h2> Todo tasks : </h2>
 <div *ngFor="let todo of todo$">
-  <mat-card *ngIf="!todo.isDone">
+  <mat-card *ngIf="!todo.isDone" style="margin: 1rem">
     <mat-card-title>
       {{todo.title}}
     </mat-card-title>
